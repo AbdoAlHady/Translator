@@ -41,6 +41,14 @@ flutter:
     - assets/images/
   #   - images/a_dot_ham.jpeg
 
+flutter_assets:
+  assets_path: assets/images/
+  output_path: lib/core/utils/
+  filename: app_images.dart
+  field_prefix:
+  classname: AppImages
+  
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
