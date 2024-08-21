@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:translator_app/core/helper/extensions.dart';
 import 'package:translator_app/core/helper/spacing.dart';
+import 'package:translator_app/core/routing/routes.dart';
+import 'package:translator_app/core/theme/app_colors.dart';
 import 'package:translator_app/core/utils/app_images.dart';
+import 'package:translator_app/ui/widgets/home/arrow_button.dart';
 import 'package:translator_app/ui/widgets/home/home_rich_text.dart';
 
 class HomeScreenBody extends StatelessWidget {
@@ -29,7 +33,8 @@ class HomeScreenBody extends StatelessWidget {
             children: [
               // Rich Text
               const HomeRichText(),
-              verticalSpace(35)
+              verticalSpace(35),
+              const ArrowButton(),
             ],
           ),
         ),
