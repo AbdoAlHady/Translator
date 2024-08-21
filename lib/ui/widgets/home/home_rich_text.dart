@@ -28,11 +28,11 @@ class HomeRichText extends StatelessWidget {
           WidgetSpan(child: verticalSpace(35)),
           TextSpan(
             text: 'Help you communicate in \n',
-            style: AppTextStyles.font14BlakW300,
+            style: AppTextStyles.font14BlackW300,
           ),
           TextSpan(
             text: 'Different Language \n',
-            style: AppTextStyles.font14BlakW300,
+            style: AppTextStyles.font14BlackW300,
           ),
         ],
       ),

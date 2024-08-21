@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:translator_app/core/helper/spacing.dart';
 import 'package:translator_app/core/utils/app_images.dart';
 import 'package:translator_app/ui/widgets/home/arrow_button.dart';
-import 'package:translator_app/ui/widgets/home/country_flag_button.dart';
+import 'package:translator_app/ui/widgets/home/countries_with_flag_card.dart';
 import 'package:translator_app/ui/widgets/home/home_rich_text.dart';
 
 class HomeScreenBody extends StatelessWidget {

@@ -19,9 +19,16 @@ abstract class AppTextStyles {
     ),
   );
 
-  static TextStyle font14BlakW300 = GoogleFonts.poppins(
+  static TextStyle font14BlackW300 = GoogleFonts.poppins(
     textStyle: TextStyle(
       fontSize: 14.sp,
+      fontWeight: FontWeight.w300,
+      color: Colors.black,
+    ),
+  );
+  static TextStyle font13BlackW300 = GoogleFonts.poppins(
+    textStyle: TextStyle(
+      fontSize: 13.sp,
       fontWeight: FontWeight.w300,
       color: Colors.black,
     ),
