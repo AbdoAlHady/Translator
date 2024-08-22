@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:google_generative_ai/google_generative_ai.dart';
+import 'package:translator_app/core/helper/env_variables.dart';
 import 'package:translator_app/data/models/country_data_model.dart';
 import 'package:translator_app/logic/translation_state.dart';
 
@@ -18,13 +20,14 @@ class TranslationCubit extends Cubit<TranslationState> {
   int wordCount = 0;
   Timer? debounce;
 
-  String translateText = '';
+  String translatedText = '';
   FlutterTts flutterTts = FlutterTts();
 
-  Future<void> handleVolumSpeak() async {
-    final text = translateFromController.text;
-
-    await flutterTts.setLanguage("ar-SA");
+  Future<void> handleVolumSpeak({bool isFrom = true}) async {
+    final text = isFrom ? translateFromController.text : translatedText;
+    await flutterTts.setLanguage(isFrom
+        ? selectedCountryFrom!.languageCode
+        : selectedCountryTo!.languageCode);
     await flutterTts.speak(text);
   }
 
@@ -82,8 +85,41 @@ class TranslationCubit extends Cubit<TranslationState> {
   }
 
   Future<void> copyFromClipBoard() async {
-    if (translateText.isEmpty) return;
-    await Clipboard.setData(ClipboardData(text: translateText));
+    if (translatedText.isEmpty) return;
+    await Clipboard.setData(ClipboardData(text: translatedText));
     emit(SuccessCopyFromClipBoard());
+  }
+
+  Future<void> translateText() async {
+    if (selectedCountryFrom != null &&
+        selectedCountryTo != null &&
+        translateFromController.text.isNotEmpty) {
+      final apiKey = EnvVariables().apiKey;
+      if (apiKey.isEmpty) {
+        debugPrint('API key is empty');
+        return;
+      }
+      final inputText = translateFromController.text;
+      final fromLang = selectedCountryFrom?.languageCode;
+      final toLang = selectedCountryTo?.languageCode;
+      emit(TranslateTextLoadingState());
+      try {
+        final model = GenerativeModel(
+          apiKey: apiKey,
+          model: 'gemini-1.5-flash',
+        );
+        final content = [
+          Content.text('Translate only $inputText from $fromLang to $toLang')
+        ];
+        final response = await model.generateContent(content);
+        translatedText = response.text!;
+        emit(TranslateTextSuccessState());
+        debugPrint(response.text);
+      } catch (e) {
+        debugPrint(e.toString());
+        emit(TranslateTextErrorState(
+            'Faild to translate text, please try agin.!'));
+      }
+    }
   }
 }

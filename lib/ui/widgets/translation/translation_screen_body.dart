@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:translator_app/core/helper/spacing.dart';
@@ -9,6 +10,8 @@ import 'package:translator_app/ui/widgets/translation/language_selection_section
 import 'package:translator_app/ui/widgets/translation/translate_from_section.dart';
 import 'package:translator_app/ui/widgets/translation/translate_to_section.dart';
 import 'package:translator_app/ui/widgets/translation/translation_top_bar.dart';
+
+import '../../../logic/translation_cubit.dart';
 
 class TranslationScreenBody extends StatelessWidget {
   const TranslationScreenBody({super.key});
@@ -25,15 +28,20 @@ class TranslationScreenBody extends StatelessWidget {
           verticalSpace(10),
           const TranslateToSection(),
           verticalSpace(20),
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 10.h),
-            alignment: Alignment.center,
-            width: MediaQuery.sizeOf(context).width,
-            decoration: BoxDecoration(
-              color: AppColors.primary,
-              borderRadius: BorderRadius.circular(20),
+          GestureDetector(
+            onTap: () {
+              context.read<TranslationCubit>().translateText();
+            },
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 10.h),
+              alignment: Alignment.center,
+              width: MediaQuery.sizeOf(context).width,
+              decoration: BoxDecoration(
+                color: AppColors.primary,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text('Submit', style: AppTextStyles.font14WhitekW700),
             ),
-            child: Text('Submit', style: AppTextStyles.font14WhitekW700),
           ),
           verticalSpace(20),
         ],

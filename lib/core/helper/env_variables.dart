@@ -4,13 +4,13 @@ class EnvVariables {
   EnvVariables._();
   static final EnvVariables _instance = EnvVariables._();
   factory EnvVariables() => _instance;
-  String _apiToken = '';
+  String _apiKey = '';
 
   // init
   Future<void> init() async {
     await dotenv.load(fileName: '.env');
-    _apiToken = dotenv.get('API_TOKEN');
+    _apiKey = dotenv.get('API_KEY');
   }
 
-  String get apiToken => _apiToken;
+  String get apiKey => _apiKey;
 }

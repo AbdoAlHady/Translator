@@ -72,7 +72,9 @@ class _TranslateFromTextFieldState extends State<TranslateFromTextField> {
                   ),
                   GestureDetector(
                     onTap: () async {
-                      await cubit.handleVolumSpeak();
+                      if (cubit.wordCount > 0) {
+                        await cubit.handleVolumSpeak();
+                      }
                     },
                     child: Icon(
                       Icons.volume_up_outlined,
