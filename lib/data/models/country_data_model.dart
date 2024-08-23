@@ -16,7 +16,7 @@ List<CountryDataModel> countries = [
     languageCode: 'en-US',
   ),
   CountryDataModel(
-      name: 'Russin', flag: AppImages.imagesRussia, languageCode: 'ru-RU'),
+      name: 'Russin', flag: AppImages.imagesRussia, languageCode: 'cv-RU'),
   CountryDataModel(
       name: 'China', flag: AppImages.imagesChina, languageCode: 'zh-CN'),
   CountryDataModel(

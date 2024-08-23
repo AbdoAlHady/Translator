@@ -23,6 +23,7 @@ dependencies:
   flutter_tts: ^4.0.2
   flutter_dotenv: ^5.1.0
   google_generative_ai: ^0.4.5
+  percent_indicator: ^4.2.3
 
 dev_dependencies:
   flutter_test:

@@ -44,7 +44,19 @@ class _TranslateToTextState extends State<TranslateToText> {
       builder: (context, state) {
         var cubit = context.read<TranslationCubit>();
         if (state is TranslateTextLoadingState) {
-          return const Center(child: CircularProgressIndicator());
+          return Center(
+            child: Container(
+              height: 50.h,
+              width: 50.w,
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(10),
+              decoration: const BoxDecoration(
+                  shape: BoxShape.circle, color: AppColors.primary),
+              child: const CircularProgressIndicator(
+                color: AppColors.white,
+              ),
+            ),
+          );
         } else if (state is TranslateTextErrorState) {
           return Center(
             child: Text(

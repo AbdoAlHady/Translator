@@ -12,6 +12,7 @@ class HomeScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage(AppImages.imagesWorldmap),
@@ -26,13 +27,13 @@ class HomeScreenBody extends StatelessWidget {
         ),
         child: SizedBox(
           width: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Expanded(child: Center(child: CountriesWithFlagCard())),
-              // Rich Text
-              Expanded(
-                child: Column(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Center(child: CountriesWithFlagCard()),
+                // Rich Text
+                Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const HomeRichText(),
@@ -40,8 +41,8 @@ class HomeScreenBody extends StatelessWidget {
                     const ArrowButton(),
                   ],
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
