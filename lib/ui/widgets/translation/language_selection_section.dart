@@ -13,6 +13,7 @@ class LanguageSelectionSection extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(top: 15.h),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // Change language From
           const LanguageDropDown(changeFrom: true),
