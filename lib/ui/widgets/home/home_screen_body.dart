@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:translator_app/core/helper/spacing.dart';
 import 'package:translator_app/core/utils/app_images.dart';
 import 'package:translator_app/ui/widgets/home/arrow_button.dart';
-import 'package:translator_app/ui/widgets/home/country_flag_button.dart';
+import 'package:translator_app/ui/widgets/home/countries_with_flag_card.dart';
 import 'package:translator_app/ui/widgets/home/home_rich_text.dart';
 
 class HomeScreenBody extends StatelessWidget {
@@ -12,6 +12,7 @@ class HomeScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage(AppImages.imagesWorldmap),
@@ -26,13 +27,13 @@ class HomeScreenBody extends StatelessWidget {
         ),
         child: SizedBox(
           width: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Expanded(child: Center(child: CountriesWithFlagCard())),
-              // Rich Text
-              Expanded(
-                child: Column(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Center(child: CountriesWithFlagCard()),
+                // Rich Text
+                Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const HomeRichText(),
@@ -40,8 +41,8 @@ class HomeScreenBody extends StatelessWidget {
                     const ArrowButton(),
                   ],
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

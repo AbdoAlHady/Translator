@@ -2,9 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:translator_app/core/helper/spacing.dart';
 import 'package:translator_app/core/theme/app_colors.dart';
+import 'package:translator_app/core/theme/app_text_styles.dart';
 import 'package:translator_app/data/models/country_data_model.dart';
 
 class CountriesWithFlagCard extends StatefulWidget {
@@ -77,12 +77,8 @@ class _CountriesWithFlagCardState extends State<CountriesWithFlagCard> {
                   Text(
                     country.name,
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.poppins(
-                      textStyle: TextStyle(
-                        color: isSelected ? AppColors.white : AppColors.black,
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w300,
-                      ),
+                    style: AppTextStyles.font14BlackW300.copyWith(
+                      color: isSelected ? AppColors.white : AppColors.black,
                     ),
                   ),
                 ],
